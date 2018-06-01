@@ -1,7 +1,5 @@
 import React from "react"
-
 import ReactDOM from "react-dom"
-
 import ToDoItems from "./ToDoItems"
 import "./index.css"
 
