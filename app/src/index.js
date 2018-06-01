@@ -1,6 +1,8 @@
 import React from "react"
-import ToDoItems from "./ToDoItems"
+
 import ReactDOM from "react-dom"
+
+import ToDoItems from "./ToDoItems"
 import "./index.css"
 
 class TaskForm extends React.Component {
