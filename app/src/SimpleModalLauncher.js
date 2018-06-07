@@ -38,12 +38,7 @@ class SimpleModalLauncher extends React.Component {
                 {showModal && (
                     <SimpleModal
                         onCloseRequest={() => this.handleToggleModal()}
-                    >
-                        <img
-                            src="https://placeimg.com/900/650/nature"
-                            alt="Nature"
-                        />
-                    </SimpleModal>
+                    />
                 )}
             </div>
         )

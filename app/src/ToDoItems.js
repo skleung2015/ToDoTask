@@ -1,5 +1,5 @@
 import React from "react"
-import SimpleModalLauncher from "./SimpleModalLauncherStyles"
+import SimpleModalLauncher from "./SimpleModalLauncher"
 
 class ToDoItems extends React.Component {
     constructor(props) {
