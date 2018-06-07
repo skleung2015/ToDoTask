@@ -5,7 +5,7 @@ const path = require("path")
 const app = express()
 
 // Loading the environment port with default fallbacks
-const HTTP_PORT = process.env.PORT || 3000
+const HTTP_PORT = process.env.PORT || 7000
 
 // Serve static assets
 app.use(express.static(path.join(__dirname, "..", "dist")))

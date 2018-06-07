@@ -38,6 +38,20 @@ class TaskForm extends React.Component {
         })
     }
 
+    editTask(key, newValue) {
+        if (newValue !== "") {
+            const newTask = {
+                text: newValue,
+                key: Date.now()
+            }
+            this.setState(prevState => ({
+                tasks: prevState.tasks.concat(newTask)
+            }))
+        }
+        console.log(this.state.tasks)
+        event.preventDefault()
+    }
+
     render() {
         return (
             <div className="toDoInterface">
@@ -48,7 +62,6 @@ class TaskForm extends React.Component {
                         <button type="submit">Add</button>
                     </form>
                 </div>
-
                 <div>
                     <ToDoItems
                         entries={this.state.tasks}
