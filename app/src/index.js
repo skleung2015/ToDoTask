@@ -12,6 +12,7 @@ class TaskForm extends React.Component {
 
         this.addTask = this.addTask.bind(this)
         this.deleteTask = this.deleteTask.bind(this)
+        this.editTask = this.editTask.bind(this, this)
     }
 
     addTask(event) {
@@ -39,6 +40,12 @@ class TaskForm extends React.Component {
     }
 
     editTask(key, newValue) {
+        console.log(key)
+        const filteredItems = this.state.tasks.filter(item => item.key !== key)
+
+        this.setState({
+            tasks: filteredItems
+        })
         if (newValue !== "") {
             const newTask = {
                 text: newValue,
@@ -66,6 +73,7 @@ class TaskForm extends React.Component {
                     <ToDoItems
                         entries={this.state.tasks}
                         delete={this.deleteTask}
+                        edit={this.editTask}
                     />
                 </div>
             </div>
