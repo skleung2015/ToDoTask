@@ -5,13 +5,14 @@ class Modal extends React.Component {
     constructor(props) {
         super(props)
 
-        this.edit = this.edit.bind(this)
+        this.editValue = this.editValue.bind(this)
     }
 
-    edit(originalKey, newValue) {
-        this.props.edit(originalKey, newValue)
+    editValue(originalKey, newValue) {
+        console.log(originalKey)
+        console.log(newValue)
+        this.props.editValue(originalKey, newValue)
     }
-
     render() {
         const backdropStyle = {
             position: "fixed",
@@ -35,19 +36,21 @@ class Modal extends React.Component {
         // const FormGroup = ReactBootstrap.FormGroup
         // const FormControl = ReactBootstrap.FormControl
         // const originalKey = this.props.keyValue
-        console.log(this.props.keyValue)
-        console.log(this.newKey)
         return (
             <div className="backdrop" style={backdropStyle}>
                 <div className="modal" style={modalStyle}>
                     <div>
-                        <form onSubmit={this.edit}>
-                            Task:
-                            <input type="text" ref={a => (this.newKey = a)} />
-                            <button type="submit" onClick={this.props.close}>
-                                Add
-                            </button>
-                        </form>
+                        Task:
+                        <input type="text" ref={a => (this.newValue = a)} />
+                        <button
+                            onClick={() =>
+                                this.editValue(
+                                    this.props.keyValue,
+                                    this.newValue
+                                )}
+                        >
+                            Add
+                        </button>
                     </div>
 
                     <div className="modalButton">

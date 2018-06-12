@@ -12,7 +12,7 @@ class TaskForm extends React.Component {
 
         this.addTask = this.addTask.bind(this)
         this.deleteTask = this.deleteTask.bind(this)
-        this.editTask = this.editTask.bind(this, this)
+        this.editTask = this.editTask.bind(this)
     }
 
     addTask(event) {

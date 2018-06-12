@@ -38,7 +38,13 @@ class ToDoItems extends React.Component {
     showModal(key) {
         this.setState({
             ...this.state,
-            modal: <Modal keyValue={key} close={this.closeModal} />
+            modal: (
+                <Modal
+                    keyValue={key}
+                    edit={this.props.editValue}
+                    close={this.closeModal}
+                />
+            )
         })
     }
 
