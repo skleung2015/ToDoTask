@@ -28,6 +28,7 @@ class TaskForm extends React.Component {
 
         this.inputElement.value = ""
         console.log(this.state.tasks)
+        console.log(event)
         event.preventDefault()
     }
 
@@ -42,17 +43,17 @@ class TaskForm extends React.Component {
     editTask(key, newValue) {
         console.log(key)
         const filteredItems = this.state.tasks.filter(item => item.key !== key)
-
         this.setState({
             tasks: filteredItems
         })
+
         if (newValue !== "") {
-            const newTask = {
+            const editedTask = {
                 text: newValue,
-                key: Date.now()
+                key
             }
-            this.setState(prevState => ({
-                tasks: prevState.tasks.concat(newTask)
+            this.setState(previousState => ({
+                tasks: previousState.tasks.concat(editedTask)
             }))
         }
         console.log(this.state.tasks)
@@ -73,7 +74,7 @@ class TaskForm extends React.Component {
                     <ToDoItems
                         entries={this.state.tasks}
                         delete={this.deleteTask}
-                        edit={this.editTask}
+                        editValue={this.editTask}
                     />
                 </div>
             </div>

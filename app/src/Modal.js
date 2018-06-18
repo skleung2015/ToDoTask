@@ -13,6 +13,7 @@ class Modal extends React.Component {
         console.log(newValue)
         this.props.editValue(originalKey, newValue)
     }
+
     render() {
         const backdropStyle = {
             position: "fixed",
