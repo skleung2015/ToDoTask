@@ -1,5 +1,6 @@
 import React from "react"
-import Modal from "./Modal"
+import { Button, Modal } from "reactstrap"
+import "./index.css"
 
 class ToDoItems extends React.Component {
     constructor(props) {
@@ -7,12 +8,14 @@ class ToDoItems extends React.Component {
 
         this.createTasks = this.createTasks.bind(this)
         this.delete = this.delete.bind(this)
-        this.closeModal = this.closeModal.bind(this)
-        this.showModal = this.showModal.bind(this)
+        this.handleShow = this.handleShow(this)
+        this.handleClose = this.handleClose(this)
+        // this.closeModal = this.closeModal.bind(this)
+        // this.showModal = this.showModal.bind(this)
         this.editValue = this.editValue.bind(this)
         this.state = {
-            show: false,
-            key: null
+            show: false
+            // key: null
         }
     }
 
@@ -20,7 +23,7 @@ class ToDoItems extends React.Component {
         return (
             <li key={item.key}>
                 {item.text}
-                <button onClick={() => this.showModal(item.key)}>Edit</button>
+                <button onClick={this.handleShow}>Edit</button>
                 <button onClick={() => this.delete(item.key)}>Delete</button>
             </li>
         )
@@ -36,21 +39,13 @@ class ToDoItems extends React.Component {
         this.props.delete(key)
     }
 
-    closeModal() {
-        this.setState({
-            ...this.state,
-            show: false
-        })
+    handleClose() {
+        this.setState({ show: false })
     }
 
-    showModal(key) {
-        this.setState({
-            ...this.state,
-            show: true,
-            key
-        })
+    handleShow() {
+        this.setState({ show: true })
     }
-
     render() {
         const toDoEntries = this.props.entries
         const listTasks = toDoEntries.map(this.createTasks)
@@ -58,13 +53,44 @@ class ToDoItems extends React.Component {
         return (
             <div>
                 <ul className="theList">{listTasks}</ul>
-                {this.state.show ? (
+                <div className="modal-container" style={{ height: 200 }}>
                     <Modal
-                        keyValue={this.state.key}
-                        editValue={this.editValue}
-                        close={this.closeModal}
-                    />
-                ) : null}
+                        show={this.state.show}
+                        onHide={this.handleClose}
+                        container={this}
+                        aria-labelledby="contained-modal-title"
+                    >
+                        <Modal.Dialog>
+                            <Modal.Header>
+                                <Modal.Title>Task List</Modal.Title>
+                            </Modal.Header>
+                            <div>
+                                <Modal.Body>
+                                    Task:
+                                    <input
+                                        type="text"
+                                        ref={a => (this.newValue = a)}
+                                    />
+                                </Modal.Body>
+                            </div>
+                            <Modal.Footer>
+                                <Button onClick={this.handleClose}>
+                                    Close
+                                </Button>
+                                <Button
+                                    bsStyle="primary"
+                                    onClick={() =>
+                                        this.editValue(
+                                            this.state.key,
+                                            this.newValue.value
+                                        )}
+                                >
+                                    Save changes
+                                </Button>
+                            </Modal.Footer>
+                        </Modal.Dialog>
+                    </Modal>
+                </div>
             </div>
         )
     }

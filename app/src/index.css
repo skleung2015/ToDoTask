@@ -53,3 +53,11 @@ ul.theList {
     width: 150px;
     margin-bottom: 10px;
 }
+
+.modal-container {
+    position: relative;
+}
+.modal-container .modal,
+.modal-container .modal-backdrop {
+    position: absolute;
+}
