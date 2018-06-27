@@ -24,7 +24,6 @@
 ul.theList {
     padding: 0;
 }
-
 .modal {
     font-family: "Open Sans", sans-serif;
     text-transform: uppercase;
@@ -32,26 +31,8 @@ ul.theList {
 }
 
 .modal h1 {
-    margin-top: 200px;
+    margin-top: 400px;
     padding: 2rem;
-}
-
-.modalButton {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-.modal button {
-    border: 1px solid black;
-    font-family: inherit;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    background: whitesmoke;
-    padding: 0.5rem;
-    border-radius: 5px;
-    width: 150px;
-    margin-bottom: 10px;
 }
 
 .modal-container {

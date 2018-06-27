@@ -14,6 +14,29 @@ class TaskForm extends React.Component {
         this.addTask = this.addTask.bind(this)
         this.deleteTask = this.deleteTask.bind(this)
         this.editTask = this.editTask.bind(this)
+        this.getTasks = this.getTasks.bind(this)
+        this.ComponentDidMount = this.ComponentDidMount(this)
+    }
+
+    getTasks() {
+        fetch("http://localhost:7000/tasks")
+            .then(response => response.json())
+            .then(parseJSON =>
+                parseJSON.results.map(task => ({
+                    task: `${task.Task}`,
+                    identifier: `${task.Identifier}`
+                }))
+            )
+            .then(tasks =>
+                this.setState({
+                    tasks
+                })
+            )
+            .catch(error => this.setState({ error, isLoading: false }))
+    }
+
+    ComponentDidMount() {
+        this.getTasks()
     }
 
     addTask(event) {

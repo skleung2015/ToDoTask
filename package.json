@@ -1,7 +1,7 @@
 {
   "name": "hackthon",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "scripts": {
     "test": "mocha 'test/**/*.js' --compilers js:babel-core/register --require babel-polyfill",
@@ -26,10 +26,13 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
     "lodash": "^4.17.5",
     "material-ui": "^0.18.1",
+    "mysql": "^2.15.0",
     "node-uuid": "^1.4.8",
+    "nodemon": "^1.17.5",
     "prop-types": "^15.6.1",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
@@ -44,7 +47,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "request-promise": "^4.2.1",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -93,5 +96,6 @@
   "bugs": {
     "url": "https://github.com/shaohuahuang/hackthon/issues"
   },
-  "homepage": "https://github.com/shaohuahuang/hackthon#readme"
+  "homepage": "https://github.com/shaohuahuang/hackthon#readme",
+  "keywords": []
 }

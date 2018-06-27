@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Modal } from "reactstrap"
+import { Button, ButtonToolbar, Modal } from "react-bootstrap"
 import "./index.css"
 
 class ToDoItems extends React.Component {
@@ -8,14 +8,14 @@ class ToDoItems extends React.Component {
 
         this.createTasks = this.createTasks.bind(this)
         this.delete = this.delete.bind(this)
-        this.handleShow = this.handleShow(this)
-        this.handleClose = this.handleClose(this)
+        this.handleShow = this.handleShow.bind(this)
+        this.handleClose = this.handleClose.bind(this)
         // this.closeModal = this.closeModal.bind(this)
         // this.showModal = this.showModal.bind(this)
         this.editValue = this.editValue.bind(this)
         this.state = {
-            show: false
-            // key: null
+            show: false,
+            key: null
         }
     }
 
@@ -23,7 +23,7 @@ class ToDoItems extends React.Component {
         return (
             <li key={item.key}>
                 {item.text}
-                <button onClick={this.handleShow}>Edit</button>
+                <button onClick={() => this.handleShow(item.key)}>Edit</button>
                 <button onClick={() => this.delete(item.key)}>Delete</button>
             </li>
         )
@@ -33,6 +33,7 @@ class ToDoItems extends React.Component {
         console.log(originalKey)
         console.log(newValue)
         this.props.editValue(originalKey, newValue)
+        this.handleClose()
     }
 
     delete(key) {
@@ -43,8 +44,8 @@ class ToDoItems extends React.Component {
         this.setState({ show: false })
     }
 
-    handleShow() {
-        this.setState({ show: true })
+    handleShow(key) {
+        this.setState({ show: true, key })
     }
     render() {
         const toDoEntries = this.props.entries
@@ -53,32 +54,39 @@ class ToDoItems extends React.Component {
         return (
             <div>
                 <ul className="theList">{listTasks}</ul>
-                <div className="modal-container" style={{ height: 200 }}>
+                <div className="modal" style={{ height: 100 }}>
                     <Modal
                         show={this.state.show}
                         onHide={this.handleClose}
                         container={this}
                         aria-labelledby="contained-modal-title"
                     >
-                        <Modal.Dialog>
-                            <Modal.Header>
-                                <Modal.Title>Task List</Modal.Title>
-                            </Modal.Header>
-                            <div>
-                                <Modal.Body>
-                                    Task:
-                                    <input
-                                        type="text"
-                                        ref={a => (this.newValue = a)}
-                                    />
-                                </Modal.Body>
-                            </div>
-                            <Modal.Footer>
-                                <Button onClick={this.handleClose}>
+                        <Modal.Header>
+                            <Modal.Title id="contained-modal-title">
+                                Task List
+                            </Modal.Title>
+                        </Modal.Header>
+                        <div>
+                            <Modal.Body>
+                                Task:
+                                <input
+                                    type="text"
+                                    ref={a => (this.newValue = a)}
+                                />
+                            </Modal.Body>
+                        </div>
+                        <Modal.Footer>
+                            <ButtonToolbar>
+                                <Button
+                                    bsStyle="primary"
+                                    bsSize="large"
+                                    onClick={this.handleClose}
+                                >
                                     Close
                                 </Button>
                                 <Button
-                                    bsStyle="primary"
+                                    bsStyle="success"
+                                    bsSize="small"
                                     onClick={() =>
                                         this.editValue(
                                             this.state.key,
@@ -87,8 +95,8 @@ class ToDoItems extends React.Component {
                                 >
                                     Save changes
                                 </Button>
-                            </Modal.Footer>
-                        </Modal.Dialog>
+                            </ButtonToolbar>
+                        </Modal.Footer>
                     </Modal>
                 </div>
             </div>
