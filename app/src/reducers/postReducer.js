@@ -45,8 +45,10 @@ export default function taskReducer(state = initialState, action) {
             }
 
         case ADD_TO_DO:
-            state.tasks = [...state.tasks, action.payload]
-            return state
+            console.log(action.payload)
+            return {
+                tasks: [...state.tasks, action.payload]
+            }
 
         default:
             // ALWAYS have a default case in a reducer

@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 // import { fetchTasks } from "../actions/postAction"
 
 const TasksList = props => (
-    <ul>{props.items.map(item => <li key={item.key}>{item.name}</li>)}</ul>
+    <ul>{props.items.map(item => <li key={item.key}>{item.text}</li>)}</ul>
 )
 
 const mapStateToProps = state => ({
