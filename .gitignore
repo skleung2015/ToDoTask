@@ -1,6 +1,6 @@
 # Logs
 node-modules
-dist
+dist/
 
 logs
 *.log
