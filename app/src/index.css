@@ -24,21 +24,3 @@
 ul.theList {
     padding: 0;
 }
-.modal {
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.modal h1 {
-    margin-top: 400px;
-    padding: 2rem;
-}
-
-.modal-container {
-    position: relative;
-}
-.modal-container .modal,
-.modal-container .modal-backdrop {
-    position: absolute;
-}

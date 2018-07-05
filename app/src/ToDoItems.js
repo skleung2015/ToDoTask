@@ -1,6 +1,16 @@
 import React from "react"
 import { Button, ButtonToolbar, Modal } from "react-bootstrap"
-import "./index.css"
+// import "./index.css"
+import styled from "styled-components"
+
+const Modalmod = styled.h1`
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 100px;
+    padding: 2rem;
+    position: relative;
+`
 
 class ToDoItems extends React.Component {
     constructor(props) {
@@ -54,13 +64,8 @@ class ToDoItems extends React.Component {
         return (
             <div>
                 <ul className="theList">{listTasks}</ul>
-                <div className="modal" style={{ height: 100 }}>
-                    <Modal
-                        show={this.state.show}
-                        onHide={this.handleClose}
-                        container={this}
-                        aria-labelledby="contained-modal-title"
-                    >
+                <Modalmod style={{ height: 100 }}>
+                    <Modal show={this.state.show} onHide={this.handleClose}>
                         <Modal.Header>
                             <Modal.Title id="contained-modal-title">
                                 Task List
@@ -98,7 +103,7 @@ class ToDoItems extends React.Component {
                             </ButtonToolbar>
                         </Modal.Footer>
                     </Modal>
-                </div>
+                </Modalmod>
             </div>
         )
     }
