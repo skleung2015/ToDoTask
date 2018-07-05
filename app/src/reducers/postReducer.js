@@ -45,24 +45,7 @@ export default function taskReducer(state = initialState, action) {
             }
 
         case ADD_TO_DO:
-            const text = this.inputElement.value
-            const key = Date.now()
-
-            fetch(
-                `http://localhost:7000/addTask?task=${text}&identifier=${key}`
-            )
-                .then(() => {
-                    const newTask = {
-                        text,
-                        key
-                    }
-                    this.setState(prevState => ({
-                        tasks: prevState.tasks.concat(newTask)
-                    }))
-                })
-                .catch(error => this.setState({ error, isLoading: false }))
-            this.inputElement.value = ""
-            console.log(this.state.tasks)
+            state.tasks = [...state.tasks, action.payload]
             return state
 
         default:

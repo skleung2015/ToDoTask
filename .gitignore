@@ -1,6 +1,7 @@
 # Logs
 node-modules
 dist/
+.idea/
 
 logs
 *.log

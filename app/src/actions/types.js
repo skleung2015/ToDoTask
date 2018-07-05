@@ -17,7 +17,16 @@ export const fetchTasksError = error => ({
     payload: { error }
 })
 
-export const addToDo = text => ({
+export const addToDoRequest = text => dispatch => {
+    const key = Date.now()
+    return fetch(`http://localhost:7000/addTask?task=${text}&identifier=${key}`)
+        .then(() => {
+            dispatch(addToDo(text, key))
+        })
+        .catch(error => console.log(error))
+}
+
+const addToDo = (text, key) => ({
     type: ADD_TO_DO,
-    payload: { text }
+    payload: { text, key }
 })

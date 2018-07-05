@@ -2,11 +2,11 @@ import React from "react"
 
 import { connect } from "react-redux"
 
-import { addTodo } from "../actions/types"
+import { addToDoRequest } from "../actions/types"
 
-const AddTodo = ({ dispatch }) => {
+const AddTodo = props => {
+    console.log(props)
     let input
-
     return (
         <div>
             <form
@@ -15,7 +15,7 @@ const AddTodo = ({ dispatch }) => {
                     if (!input.value.trim()) {
                         return
                     }
-                    dispatch(addTodo(input.value))
+                    props.addToDoRequest(input.value)
                     input.value = ""
                 }}
             >
@@ -26,4 +26,4 @@ const AddTodo = ({ dispatch }) => {
     )
 }
 
-export default connect()(AddTodo)
+export default connect(null, { addToDoRequest })(AddTodo)
