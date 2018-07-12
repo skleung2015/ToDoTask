@@ -20,7 +20,7 @@ const AddTodo = props => {
                 }}
             >
                 <input ref={node => (input = node)} />
-                <button type="submit">Add Todo</button>
+                <button type="submit">Add</button>
             </form>
         </div>
     )
