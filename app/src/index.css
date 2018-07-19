@@ -1,26 +1,21 @@
-.toDoInterface .header input {
-    padding: 10px;
-    font-size: 16px;
-    width: 165px;
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
-.toDoInterface .header button {
-    padding: 10px;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
+/* Control the left side */
+.left {
+    left: 0;
+    background-color: white;
 }
 
-.toDoInterface .theList li {
-    color: rebeccapurple;
-    background-color: rgb(255, 255, 128);
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    list-style: none;
-    cursor: pointer;
-}
-
-ul.theList {
-    padding: 0;
+/* Control the right side */
+.right {
+    right: 0;
+    background-color: red;
 }

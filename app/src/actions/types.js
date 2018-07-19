@@ -2,6 +2,7 @@ export const FETCH_TASKS_SUCCESS = "FETCH_TASKS_SUCCESS"
 export const ADD_TO_DO = "ADD_TO_DO"
 export const TO_DELETE = "TO_DELETE"
 export const EDIT_TO_DO = "EDIT_TO_DO"
+export const TO_AUTHENTICATE = "TO_AUTHENTICATE"
 
 const fetchTasksSuccess = data => ({
     type: FETCH_TASKS_SUCCESS,
@@ -39,6 +40,15 @@ export const editRequest = (text, key) => dispatch =>
         })
         .catch(error => console.log(error))
 
+export const authenticate = (username, password) => dispatch =>
+    fetch(
+        `http://localhost:7000/authenticate?task=${username}&identifier=${password}`
+    )
+        .then(() => {
+            dispatch(authenticateLogin(username, password))
+        })
+        .catch(error => console.log(error))
+
 const addToDo = (text, key) => ({
     type: ADD_TO_DO,
     payload: { text, key }
@@ -52,4 +62,9 @@ const deleteToDo = key => ({
 const editToDo = (text, key) => ({
     type: EDIT_TO_DO,
     payload: { text, key }
+})
+
+const authenticateLogin = (username, password) => ({
+    type: TO_AUTHENTICATE,
+    payload: { username, password }
 })

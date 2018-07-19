@@ -1,8 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
-import AddTodo from "../containers/AddTodo"
-import TasksList from "../containers/TasksList"
-import ModalWindow from "../containers/ModalWindow"
+
+import Login from "../containers/Login"
 import { fetchTasks } from "../actions/types"
 
 class App extends React.Component {
@@ -33,18 +32,20 @@ class App extends React.Component {
     render() {
         console.log(this.state.key)
         return (
-            <div>
-                <AddTodo />
-                <TasksList
-                    modalClose={this.handleClose}
-                    modalOpen={this.handleShow}
-                />
-                <ModalWindow
-                    keyValue={this.state.key}
-                    show={this.state.showModal}
-                    close={this.handleClose}
-                />
-            </div>
+            <Login />
+
+            // <div>
+            //     <AddTodo />
+            //     <TasksList
+            //         modalClose={this.handleClose}
+            //         modalOpen={this.handleShow}
+            //     />
+            //     <ModalWindow
+            //         keyValue={this.state.key}
+            //         show={this.state.showModal}
+            //         close={this.handleClose}
+            //     />
+            // </div>
         )
     }
 }
